@@ -1,8 +1,10 @@
 process.env.NTBA_FIX_319 = 1;
+require("dotenv").config();
 const TelegramBot = require('node-telegram-bot-api');
-const timeout = ms => new Promise(res => setTimeout(res, ms))
-const token = '5278992860:AAEm-A0TZM5FVByRd-TLC_gmO5T6VqO2QFo';
-const bot = new TelegramBot(token, {polling: true});
+const timeout = ms => new Promise(res => setTimeout(res, ms));
+const bot = new TelegramBot(process.env.BOT_TOKEN, {polling: true});
+
+const channelId="-1001536101901";
 
 const DBCONN = require("./src/dbConn");
 
@@ -46,4 +48,7 @@ bot.on('message', (msg) => {
     const chatId = msg.chat.id;
     // send a message to the chat acknowledging receipt of their message
     // bot.sendMessage(chatId, 'Received your message');
+    console.log(chatId);
 });
+
+bot.on
